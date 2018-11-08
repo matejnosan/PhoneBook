@@ -4,14 +4,16 @@ using System.Linq;
 using System.Web;
 using System.DirectoryServices;
 using System.DirectoryServices.ActiveDirectory;
+using System.Configuration;
 
 namespace ADRestApi
 {
     public class ADHelper
     {
         //ou=child, ou=parent, dc=domain, dc=com
-        string ldapAddress = "LDAP://marifarm.si:3268/ou=Users, ou=MF, dc=marifarm, dc=si";
-       
+        //string ldapAddress = "LDAP://marifarm.si:3268/ou=Users, ou=MF, dc=marifarm, dc=si";
+        string ldapAddress = ConfigurationManager.AppSettings["ldapAddress"];
+
         public Models.Person[] searchUsers(string searchString)
         {
 
